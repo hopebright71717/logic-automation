@@ -1,0 +1,7 @@
+{"timestamp": "2026-02-01T16:46:16.990606", "task_id": "task_001", "command": "分析程式碼結構", "model": "gpt-4o", "prompt_tokens": 2500, "completion_tokens": 800, "total_tokens": 3300, "cost_usd": 0.123, "cost_twd": 3.69}
+{"timestamp": "2026-02-01T16:46:16.992526", "task_id": "task_002", "command": "生成文件", "model": "gpt-4o-mini", "prompt_tokens": 1500, "completion_tokens": 500, "total_tokens": 2000, "cost_usd": 0.075, "cost_twd": 2.25}
+{"timestamp": "2026-02-01T16:46:16.992920", "task_id": "task_003", "command": "程式碼審查", "model": "gpt-4o", "prompt_tokens": 3000, "completion_tokens": 1200, "total_tokens": 4200, "cost_usd": 0.162, "cost_twd": 4.86}
+{"timestamp": "2026-02-01T16:46:16.993834", "task_id": "task_004", "command": "翻譯文字", "model": "gpt-3.5-turbo", "prompt_tokens": 800, "completion_tokens": 300, "total_tokens": 1100, "cost_usd": 0.00085, "cost_twd": 0.03}
+{"timestamp": "2026-02-01T16:46:16.994487", "task_id": "task_005", "command": "資料分析", "model": "gpt-4o", "prompt_tokens": 2000, "completion_tokens": 600, "total_tokens": 2600, "cost_usd": 0.096, "cost_twd": 2.88}
+{"timestamp": "2026-02-01T16:46:16.995051", "task_id": "task_006", "command": "生成摘要", "model": "gpt-4o-mini", "prompt_tokens": 1200, "completion_tokens": 400, "total_tokens": 1600, "cost_usd": 0.06, "cost_twd": 1.8}
+{"timestamp": "2026-02-01T16:46:16.995882", "task_id": "task_007", "command": "錯誤診斷", "model": "gpt-4o", "prompt_tokens": 1800, "completion_tokens": 700, "total_tokens": 2500, "cost_usd": 0.096, "cost_twd": 2.88}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic — 自動化工作系統儀表板</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 頁首 -->
+        <header class="header">
+            <h1>🤖 Logic 自動化工作系統</h1>
+            <div class="time" id="currentTime">載入中...</div>
+        </header>
+
+        <!-- 主要區域 -->
+        <div class="main-grid">
+            <!-- 當前狀態 -->
+            <section class="card status-card">
+                <h2>📍 Now — 當前狀態</h2>
+                <div class="status-content">
+                    <div class="status-row">
+                        <span class="label">任務：</span>
+                        <span class="value" id="currentTask">無</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">狀態：</span>
+                        <span class="value status-badge" id="taskStatus">idle</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">開始時間：</span>
+                        <span class="value" id="taskStartTime">—</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">進度：</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="taskProgress" style="width: 0%"></div>
+                            <span class="progress-text" id="taskProgressText">0%</span>
+                        </div>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">心跳：</span>
+                        <span class="value heartbeat" id="lastHeartbeat">—</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API 成本 -->
+            <section class="card cost-card">
+                <h2>💰 API 成本</h2>
+                <div class="cost-grid">
+                    <div class="cost-item">
+                        <div class="cost-label">今日</div>
+                        <div class="cost-value" id="costTodayUSD">$0.00</div>
+                        <div class="cost-sub" id="costTodayTWD">$0 TWD</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-label">本月</div>
+                        <div class="cost-value" id="costMonthUSD">$0.00</div>
+                        <div class="cost-sub" id="costMonthTWD">$0 TWD</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-label">剩餘預算</div>
+                        <div class="cost-value" id="remainingUSD">$65.00</div>
+                        <div class="cost-sub" id="remainingPercent">100%</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-label">燃燒率</div>
+                        <div class="cost-value" id="burnRate">$0.00</div>
+                        <div class="cost-sub">/day</div>
+                    </div>
+                </div>
+                <div class="budget-bar">
+                    <div class="budget-fill" id="budgetFill" style="width: 0%"></div>
+                </div>
+                <div class="budget-info">
+                    <span id="budgetPercent">0%</span> of $65 monthly budget
+                </div>
+            </section>
+        </div>
+
+        <!-- 今日輸出 -->
+        <section class="card outputs-card">
+            <h2>📦 Done Today — 今日輸出</h2>
+            <div class="outputs-list" id="outputsList">
+                <div class="empty-state">今日尚無輸出</div>
+            </div>
+        </section>
+
+        <!-- 成本排行 TOP 5 -->
+        <section class="card rank-card">
+            <h2>🔥 Hot Commands — 成本排行 TOP 5</h2>
+            <div class="rank-table">
+                <table id="rankTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>指令</th>
+                            <th>模型</th>
+                            <th>次數</th>
+                            <th>Tokens</th>
+                            <th>成本 (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankTableBody">
+                        <tr>
+                            <td colspan="6" class="empty-state">尚無資料</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 錯誤與警告 -->
+        <section class="card errors-card">
+            <h2>⚠️ Warnings & Errors — 最近 10 條</h2>
+            <div class="errors-list" id="errorsList">
+                <div class="empty-state">無錯誤或警告 ✅</div>
+            </div>
+        </section>
+
+        <!-- 頁尾 -->
+        <footer class="footer">
+            <div class="footer-info">
+                <span>最後更新：<span id="lastUpdate">—</span></span>
+                <span class="separator">|</span>
+                <span>自動刷新：每 5 秒</span>
+                <span class="separator">|</span>
+                <span>時區：Asia/Taipei (+08:00)</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

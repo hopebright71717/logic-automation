@@ -1,0 +1,30 @@
+{
+    "currency": "USD",
+    "exchange_rate_twd": 30,
+    "budgets": {
+        "daily": {
+            "soft_limit": 1.5,
+            "hard_limit": 2.5,
+            "warning_threshold": 1.2
+        },
+        "monthly": {
+            "soft_limit": 50,
+            "hard_limit": 60,
+            "warning_threshold": 45
+        }
+    },
+    "actions": {
+        "on_soft_limit": "notify",
+        "on_hard_limit": "pause_tasks",
+        "on_warning": "log"
+    },
+    "model_fallback": {
+        "primary": "openai/gpt-4o-mini",
+        "fallback": "openai/gpt-3.5-turbo",
+        "emergency": "none"
+    },
+    "notification": {
+        "telegram": true,
+        "email": false
+    }
+}
