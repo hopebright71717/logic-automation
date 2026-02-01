@@ -125,6 +125,26 @@ class CostTracker:
         Returns:
             記錄的完整資料
         """
+        # 檢查是否為本地模型（不產生實際費用）
+        local_models = ["local", "ollama", "llama", "vicuna", "mistral", "codellama", "none", "free"]
+        is_local = any(keyword in model.lower() for keyword in local_models)
+        
+        if is_local:
+            # 本地模型不記錄成本
+            return {
+                "timestamp": datetime.now().isoformat(),
+                "task_id": task_id,
+                "command": command_summary,
+                "model": model,
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "total_tokens": prompt_tokens + completion_tokens,
+                "cost_usd": 0.0,
+                "cost_twd": 0.0,
+                "local_model": True,
+                "note": "本地模型，不計費"
+            }
+        
         cost = self.calculate_cost(model, prompt_tokens, completion_tokens)
         timestamp = datetime.now().isoformat()
         
@@ -137,14 +157,15 @@ class CostTracker:
             "completion_tokens": completion_tokens,
             "total_tokens": cost["total_tokens"],
             "cost_usd": cost["usd"],
-            "cost_twd": cost["twd"]
+            "cost_twd": cost["twd"],
+            "local_model": False
         }
         
-        # 寫入 JSONL
+        # 寫入 JSONL（只記錄實際產生費用的）
         with open(RAW_CALLS_FILE, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
         
-        # 更新彙總
+        # 更新彙總（只統計實際費用）
         self._update_summary(record)
         
         return record
