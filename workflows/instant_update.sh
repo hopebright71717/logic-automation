@@ -1,17 +1,19 @@
 #!/bin/bash
-# 超快速更新脚本 - 专为对话中频繁更新设计
-# 用途：立即更新，无需等待
+# 手动添加中文说明的包装脚本
+# 用途：为每个脚本输出添加中文翻译
 
 echo "⚡ 快速更新中..."
+echo "---中文---"
+echo "正在更新系統..."
+echo ""
 
 cd ~/logic-automation
-
-# 静默拉取
 git pull -q 2>&1 | grep -v "Already up to date" || true
-
-# 快速部署（只更新必要文件）
 rsync -a --quiet logic-system/ ~/Logic/system/
 rsync -a --quiet workflows/ ~/Logic/workflows/
 
+echo ""
 echo "✅ 更新完成！"
+echo "---中文---"  
+echo "✅ 更新成功！"
 echo "Updated at $(date '+%H:%M:%S')"
