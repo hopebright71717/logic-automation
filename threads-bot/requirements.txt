@@ -1,10 +1,4 @@
-# Threads 自动化机器人依赖
-
-# Threads API
-threads-api>=0.1.0
-
-# Instagram API
-instagrapi>=1.16.0
+# Threads 自动化机器人依赖（简化版）
 
 # AI
 openai>=1.0.0
@@ -12,10 +6,9 @@ openai>=1.0.0
 # 工具
 python-dotenv>=1.0.0
 requests>=2.31.0
-schedule>=1.2.0
 
-# 数据处理
-pandas>=2.0.0
+# 注意：threads-api 和 instagrapi 包含复杂依赖
+# 暂时不安装，先测试框架
+# threads-api>=0.1.0
+# instagrapi>=1.16.0
 
-# 日志
-loguru>=0.7.0
