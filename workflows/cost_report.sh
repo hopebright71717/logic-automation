@@ -165,15 +165,15 @@ if [ "$TODAY_CALLS" -gt 0 ]; then
     echo "   📊 今日平均每次 API 呼叫：\$$AVG_COST USD"
 fi
 
-# 計算本月燃燒率
-DAY_OF_MONTH=$(date '+%d')
+# 計算本月燃燒率（移除前导零）
+DAY_OF_MONTH=$(date '+%-d')  # %-d 会移除前导零
 if [ "$DAY_OF_MONTH" -gt 0 ]; then
     BURN_RATE=$(python3 -c "print(round($MONTH_USD / $DAY_OF_MONTH, 4))")
     BURN_RATE_TWD=$(python3 -c "print(round($BURN_RATE * $EXCHANGE_RATE, 2))")
     echo "   🔥 本月平均每日燃燒率：\$$BURN_RATE USD（NT\$ $BURN_RATE_TWD）"
     
-    # 預估本月總成本
-    DAYS_IN_MONTH=$(date -v1d -v+1m -v-1d '+%d' 2>/dev/null || echo "30")
+    # 預估本月總成本（同样移除前导零）
+    DAYS_IN_MONTH=$(date -v1d -v+1m -v-1d '+%-d' 2>/dev/null || echo "30")
     EST_MONTH=$(python3 -c "print(round($BURN_RATE * $DAYS_IN_MONTH, 2))")
     EST_MONTH_TWD=$(python3 -c "print(round($EST_MONTH * $EXCHANGE_RATE, 2))")
     echo "   📅 預估本月總成本：\$$EST_MONTH USD（NT\$ $EST_MONTH_TWD）"
