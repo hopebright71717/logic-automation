@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# 敏感信息（重要！）
+.env
+config/.env
+*.key
+*.pem
+credentials.json
+
+# 数据文件
+data/*.json
+data/*.csv
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# 临时文件
+*.tmp
+*.bak
