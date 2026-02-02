@@ -9,32 +9,40 @@ LOG_DIR="$LOGIC_DIR/logs"
 mkdir -p "$LOG_DIR"
 
 echo "🚀 啟動 Logic 系統服務..."
+echo "📝 Starting Logic System Services..."
+echo ""
 echo "時間：$(date)" | tee -a "$LOG_DIR/startup.log"
+echo "Time: $(date)" | tee -a "$LOG_DIR/startup.log"
 
 # 檢查 Logic 目錄
 if [ ! -d "$LOGIC_DIR" ]; then
     echo "❌ Logic 目錄不存在：$LOGIC_DIR" | tee -a "$LOG_DIR/startup.log"
+    echo "❌ Logic directory does not exist: $LOGIC_DIR" | tee -a "$LOG_DIR/startup.log"
     exit 1
 fi
 
 # 停止現有服務（避免重複）
 echo "🛑 停止現有服務..." | tee -a "$LOG_DIR/startup.log"
+echo "🛑 Stopping existing services..." | tee -a "$LOG_DIR/startup.log"
 pkill -f "monitor_service.sh" 2>/dev/null
 pkill -f "dashboard/server.py" 2>/dev/null
 sleep 2
 
 # 啟動監控服務
 echo "📡 啟動監控服務..." | tee -a "$LOG_DIR/startup.log"
+echo "📡 Starting monitoring service..." | tee -a "$LOG_DIR/startup.log"
 cd "$LOGIC_DIR"
 nohup bash system/monitor_service.sh > "$LOG_DIR/monitor.log" 2>&1 &
 MONITOR_PID=$!
 echo "   ✅ 監控服務已啟動（PID: $MONITOR_PID）" | tee -a "$LOG_DIR/startup.log"
+echo "   ✅ Monitoring service started (PID: $MONITOR_PID)" | tee -a "$LOG_DIR/startup.log"
 
 # 等待一下讓監控服務初始化
 sleep 2
 
 # 啟動儀表板
 echo "📊 啟動儀表板..." | tee -a "$LOG_DIR/startup.log"
+echo "📊 Starting dashboard..." | tee -a "$LOG_DIR/startup.log"
 cd "$LOGIC_DIR/system"
 nohup python3 dashboard/server.py > "$LOG_DIR/dashboard.log" 2>&1 &
 DASHBOARD_PID=$!
