@@ -27,7 +27,7 @@ if __name__ == "__main__":
         print("🚀 Logic 儀表板已啟動！")
         print("=" * 60)
         print(f"\n📊 儀表板網址：http://localhost:{PORT}")
-        print(f"📁 服務目錄：{DASHBOARD_DIR}")
+        print(f"📁 服務目錄：{LOGIC_DIR}")
         print(f"\n💡 在 iPad Jump Desktop 中，直接開啟上述網址即可查看")
         print(f"⏱  自動刷新：每 5 秒")
         print(f"\n按 Ctrl+C 停止伺服器\n")
