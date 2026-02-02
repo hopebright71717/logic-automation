@@ -1,0 +1,17 @@
+# 社群媒體內容生成器依賴
+
+# AI
+openai>=1.0.0
+
+# 定時任務
+schedule>=1.2.0
+
+# Telegram
+python-telegram-bot>=20.0
+
+# 工具
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# 圖片生成
+Pillow>=10.0.0
